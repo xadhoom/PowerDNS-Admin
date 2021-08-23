@@ -1,4 +1,4 @@
-FROM quay.io/jitesoft/alpine:3.13 AS builder
+FROM public.ecr.aws/micahhausler/alpine:3.13.0 AS builder
 LABEL maintainer="k@ndk.name"
 
 ARG BUILD_DEPENDENCIES="build-base \
@@ -74,7 +74,7 @@ RUN pip install pip-autoremove && \
     apk del ${BUILD_DEPENDENCIES}
 
 # Build image
-FROM quay.io/jitesoft/alpine:3.13
+FROM public.ecr.aws/micahhausler/alpine:3.13.0
 
 ENV FLASK_APP=/app/powerdnsadmin/__init__.py \
     USER=pda
